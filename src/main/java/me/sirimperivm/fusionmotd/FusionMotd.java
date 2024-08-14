@@ -1,10 +1,12 @@
 package me.sirimperivm.fusionmotd;
 
+import me.sirimperivm.fusionmotd.commands.MainCommand;
 import me.sirimperivm.fusionmotd.utils.ConfigManager;
 import me.sirimperivm.fusionmotd.utils.ModuleManager;
 import me.sirimperivm.fusionmotd.utils.colors.Colors;
 import me.sirimperivm.fusionmotd.utils.others.Errors;
 import me.sirimperivm.fusionmotd.utils.others.Logger;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 
 @SuppressWarnings("all")
@@ -25,6 +27,8 @@ public final class FusionMotd extends Plugin {
         configManager = new ConfigManager(plugin);
         errors = new Errors(plugin);
         modules = new ModuleManager(plugin);
+
+        ProxyServer.getInstance().getPluginManager().registerCommand(plugin, new MainCommand("motd", plugin));
 
         log.success("Plugin attivato correttamente.");
     }

@@ -18,9 +18,6 @@ public class ModuleManager {
     private ConfigManager configManager;
     private Errors errors;
 
-    private List<String> playerBlacklist;
-    private List<String> ipBlacklist;
-
     public ModuleManager(FusionMotd plugin) {
         this.plugin = plugin;
         colors = plugin.getColors();
