@@ -1,7 +1,9 @@
 package me.sirimperivm.fusionmotd;
 
 import me.sirimperivm.fusionmotd.utils.ConfigManager;
+import me.sirimperivm.fusionmotd.utils.ModuleManager;
 import me.sirimperivm.fusionmotd.utils.colors.Colors;
+import me.sirimperivm.fusionmotd.utils.others.Errors;
 import me.sirimperivm.fusionmotd.utils.others.Logger;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -12,6 +14,8 @@ public final class FusionMotd extends Plugin {
     private Colors colors;
     private Logger log;
     private ConfigManager configManager;
+    private Errors errors;
+    private ModuleManager modules;
 
     @Override
     public void onEnable() {
@@ -19,6 +23,8 @@ public final class FusionMotd extends Plugin {
         colors = new Colors(plugin);
         log = new Logger(plugin, "FusionMotd");
         configManager = new ConfigManager(plugin);
+        errors = new Errors(plugin);
+        modules = new ModuleManager(plugin);
 
         log.success("Plugin attivato correttamente.");
     }
@@ -42,5 +48,13 @@ public final class FusionMotd extends Plugin {
 
     public ConfigManager getConfigManager() {
         return configManager;
+    }
+
+    public Errors getErrors() {
+        return errors;
+    }
+
+    public ModuleManager getModules() {
+        return modules;
     }
 }
