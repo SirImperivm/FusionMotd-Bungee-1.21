@@ -3,6 +3,7 @@ package me.sirimperivm.fusionmotd.commands;
 import me.sirimperivm.fusionmotd.FusionMotd;
 import me.sirimperivm.fusionmotd.utils.ConfigManager;
 import me.sirimperivm.fusionmotd.utils.ModuleManager;
+import me.sirimperivm.fusionmotd.utils.MotdManager;
 import me.sirimperivm.fusionmotd.utils.colors.Colors;
 import me.sirimperivm.fusionmotd.utils.others.Errors;
 import me.sirimperivm.fusionmotd.utils.others.Logger;
@@ -23,6 +24,7 @@ public class MainCommand extends Command implements TabExecutor {
     private ConfigManager configManager;
     private Errors errors;
     private ModuleManager modules;
+    private MotdManager motdManager;
 
     public MainCommand(String name, FusionMotd plugin) {
         super(name);
@@ -32,6 +34,7 @@ public class MainCommand extends Command implements TabExecutor {
         configManager = plugin.getConfigManager();
         errors = plugin.getErrors();
         modules = plugin.getModules();
+        motdManager = plugin.getMotdManager();
     }
 
     private void getUsage(CommandSender s, int page) {

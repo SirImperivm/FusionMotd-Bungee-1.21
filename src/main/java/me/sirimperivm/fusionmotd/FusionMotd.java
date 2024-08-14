@@ -3,6 +3,7 @@ package me.sirimperivm.fusionmotd;
 import me.sirimperivm.fusionmotd.commands.MainCommand;
 import me.sirimperivm.fusionmotd.utils.ConfigManager;
 import me.sirimperivm.fusionmotd.utils.ModuleManager;
+import me.sirimperivm.fusionmotd.utils.MotdManager;
 import me.sirimperivm.fusionmotd.utils.colors.Colors;
 import me.sirimperivm.fusionmotd.utils.others.Errors;
 import me.sirimperivm.fusionmotd.utils.others.Logger;
@@ -18,6 +19,7 @@ public final class FusionMotd extends Plugin {
     private ConfigManager configManager;
     private Errors errors;
     private ModuleManager modules;
+    private MotdManager motdManager;
 
     @Override
     public void onEnable() {
@@ -27,8 +29,10 @@ public final class FusionMotd extends Plugin {
         configManager = new ConfigManager(plugin);
         errors = new Errors(plugin);
         modules = new ModuleManager(plugin);
+        motdManager = new MotdManager(plugin);
 
         ProxyServer.getInstance().getPluginManager().registerCommand(plugin, new MainCommand("motd", plugin));
+        ProxyServer.getInstance().getPluginManager().registerListener(plugin, new Events(plugin));
 
         log.success("Plugin attivato correttamente.");
     }
@@ -60,5 +64,9 @@ public final class FusionMotd extends Plugin {
 
     public ModuleManager getModules() {
         return modules;
+    }
+
+    public MotdManager getMotdManager() {
+        return motdManager;
     }
 }
